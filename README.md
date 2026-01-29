@@ -2,7 +2,14 @@
 
 # Claude Code Feature Flags
 
-Unofficial documentation of feature flags in [Claude Code](https://claude.ai/code) CLI.
+Unofficial documentation of feature flags and environment variables in [Claude Code](https://claude.ai/code) CLI.
+
+## Documentation
+
+| File | Description |
+|------|-------------|
+| [README.md](./README.md) | Feature flags (`~/.claude.json`) |
+| [ENVIRONMENT_VARIABLES.md](./ENVIRONMENT_VARIABLES.md) | Hidden environment variables |
 
 > **⚠️ DISCLAIMER**
 >
