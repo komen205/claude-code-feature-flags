@@ -43,8 +43,31 @@ Restart Claude Code after making changes.
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `tengu_claudeai_mcp_connectors` | `false` | Claude.ai hosted MCP servers. Requires OAuth with `user:mcp_servers` scope |
+| `tengu_claudeai_mcp_connectors` | `false` | Claude.ai hosted MCP servers (see below) |
 | `tengu_chrome_auto_enable` | `false` | Auto-enable Chrome extension integration |
+
+#### Claude.ai MCP Connectors
+
+When `tengu_claudeai_mcp_connectors` is enabled, you get access to MCP integrations that you authorize on [claude.ai](https://claude.ai). These include:
+
+- **Amplitude** - Analytics
+- **Clay** - Data enrichment
+- **Figma** - Design files
+- **Fireflies** - Meeting transcripts
+- **Incident.io** - Incident management
+- **Jam** - Bug reporting
+- **Linear** - Project management
+- **Mermaid Chart** - Diagrams
+- **Notion** - Notes & docs
+- **Plaid Developer Tools** - Financial APIs
+- **Sentry** - Error tracking
+- **Slack** - Messaging
+- **Zapier** - Automation
+
+Requirements:
+- OAuth login (`claude login`)
+- Token must have `user:mcp_servers` scope
+- Integrations must be authorized on claude.ai first
 
 ### Memory & Sessions
 
