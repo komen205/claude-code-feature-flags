@@ -1,3 +1,5 @@
+<img width="330" height="81" alt="image" src="https://github.com/user-attachments/assets/4f1d3ec9-e652-4544-8993-49e9312f81d1" />
+
 # Claude Code Feature Flags
 
 Unofficial documentation of feature flags in [Claude Code](https://claude.ai/code) CLI.
