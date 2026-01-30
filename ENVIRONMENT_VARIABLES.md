@@ -11,11 +11,43 @@ Hidden environment variables that control Claude Code behavior.
 | Variable | Description |
 |----------|-------------|
 | `CLAUDE_CODE_SUBAGENT_MODEL` | Override the model used for subagents/Task tool |
+| `ANTHROPIC_MODEL` | Override the default model |
+| `ANTHROPIC_DEFAULT_SONNET_MODEL` | Override Sonnet model version |
+| `ANTHROPIC_DEFAULT_OPUS_MODEL` | Override Opus model version |
+| `ANTHROPIC_DEFAULT_HAIKU_MODEL` | Override Haiku model version |
+| `ANTHROPIC_SMALL_FAST_MODEL` | Override the "small fast" model (used for prefetch, etc.) |
 
 **Example:**
 ```bash
 CLAUDE_CODE_SUBAGENT_MODEL=claude-sonnet-4-20250514 claude
+ANTHROPIC_SMALL_FAST_MODEL=claude-haiku-4-5-20251001 claude
 ```
+
+---
+
+## API Beta Features
+
+Use `ANTHROPIC_BETAS` to enable experimental API features (comma-separated):
+
+```bash
+ANTHROPIC_BETAS=tool-examples-2025-10-29,web-search-2025-03-05 claude
+```
+
+### Available Betas
+
+| Beta | Description |
+|------|-------------|
+| `interleaved-thinking-2025-05-14` | Interleaved thinking blocks |
+| `context-1m-2025-08-07` | 1M token context window (Sonnet) |
+| `context-management-2025-06-27` | Automatic context management |
+| `structured-outputs-2025-12-15` | Structured/typed outputs |
+| `web-search-2025-03-05` | Web search capability |
+| `tool-examples-2025-10-29` | Tool usage examples in prompts |
+| `advanced-tool-use-2025-11-20` | Advanced tool use features |
+| `tool-search-tool-2025-10-19` | Tool search functionality |
+| `effort-2025-11-24` | Effort/thinking level controls |
+| `prompt-caching-scope-2026-01-05` | Enhanced prompt caching |
+| `fine-grained-tool-streaming-2025-05-14` | Streaming for tool use |
 
 ---
 
@@ -190,11 +222,31 @@ CLAUDE_CODE_SUBAGENT_MODEL=claude-sonnet-4-20250514 claude
 
 ---
 
+## Debug Modes
+
+| Variable | Description |
+|----------|-------------|
+| `CLAUDE_DEBUG` | Enable debug logging |
+| `DEBUG` | Node.js debug output (e.g., `DEBUG=claude:*`) |
+| `CLAUDE_REPL_MODE` | Enable REPL mode (changes available tools) |
+| `CLAUDE_CODE_PROFILE_STARTUP` | Profile startup performance |
+| `CLAUDE_CODE_PERFETTO_TRACE` | Enable Perfetto tracing |
+| `CLAUDE_CODE_DEBUG_LOGS_DIR` | Custom directory for debug logs |
+| `CLAUDE_CODE_DIAGNOSTICS_FILE` | Write diagnostics to file |
+
+---
+
 ## Usage Examples
 
 ```bash
 # Use Haiku for subagents to save costs
 CLAUDE_CODE_SUBAGENT_MODEL=claude-haiku-4-5-20251001 claude
+
+# Override default model
+ANTHROPIC_MODEL=claude-opus-4-20250115 claude
+
+# Enable API betas
+ANTHROPIC_BETAS=web-search-2025-03-05,tool-examples-2025-10-29 claude
 
 # Disable cost warnings
 DISABLE_COST_WARNINGS=1 claude
@@ -202,9 +254,16 @@ DISABLE_COST_WARNINGS=1 claude
 # Debug mode with custom log directory
 CLAUDE_DEBUG=1 CLAUDE_CODE_DEBUG_LOGS_DIR=/tmp/claude-logs claude
 
+# Verbose debug output
+DEBUG=claude:* claude
+
 # Disable auto-compaction
 DISABLE_AUTO_COMPACT=1 claude
 
 # Profile startup time
 CLAUDE_CODE_PROFILE_STARTUP=1 claude
+
+# Skip the "must read before write" check
+# (via feature flag in ~/.claude.json)
+# "tengu_marble_kite": true
 ```
